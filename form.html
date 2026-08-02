@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="form.css" rel="stylesheet">
+    <title>Fill this Form !</title>
+</head>
+
+<body>
+    <form>
+        <label>
+            <p>Your first name: </p>
+            <input type="text" id="firstname"><br>
+            <span class="error" id="firstname_error"></span>
+        </label>
+        <label>
+            <p>Your last name: </p>
+            <input type="text" id="lastname"><br>
+            <span class="error" id="lastname_error"></span>
+        </label>
+        <label>
+            <p>Your age: </p>
+            <input type="number" id="age"><br>
+            <span class="error" id="age_error"></span>
+        </label>
+        <label>
+            <p>Your Date of Birth:</p>
+            <input type="date" id="date"><br>
+            <span class="error" id="dob_error"></span>
+        </label>
+        <label>
+            <p>Your email address:</p>
+            <input type="email" id="email"><br>
+            <span class="error" id="email_error"></span>
+        </label><br>
+        <button type="submit">Sign Up !</button>
+    </form>
+    <script src="form.js"></script>
+</body>
+
+</html>
