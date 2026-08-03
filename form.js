@@ -12,7 +12,7 @@ const emailerror = document.getElementById('email_error');
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();
-
+    //checking first name
     const numbers = '0123456789';
     let string = fname.value.trim();
     let i = 0;
@@ -36,4 +36,7 @@ form.addEventListener('submit', function (event) {
         fnameerror.textContent = "";
         console.log("after intitializing to empty");
     }
+
+    lnameerror.textContent = "";
+
 });
