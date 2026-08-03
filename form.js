@@ -9,11 +9,12 @@ const dob = document.getElementById('date');
 const doberror = document.getElementById('dob_error');
 const email = document.getElementById('email');
 const emailerror = document.getElementById('email_error');
-const password = document.getElementById('password');
-const passworderror = document.getElementById('password_error');
+const complete = document.getElementById('complete');
+//let count = 0;
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();
+    let count = 0;
     //checking first name
     const numbers = '0123456789';
     let string = fname.value.trim();
@@ -37,6 +38,7 @@ form.addEventListener('submit', function (event) {
     else {
         fnameerror.textContent = "";
         console.log("after intitializing to empty");
+        count++;
     }
 
     lnameerror.textContent = "";
@@ -56,6 +58,7 @@ form.addEventListener('submit', function (event) {
     }
     else {
         lnameerror.textContent = "";
+        count++;
     }
 
     //now for age and dob
@@ -67,23 +70,47 @@ form.addEventListener('submit', function (event) {
         ageerror.textContent = "This is not a valid number !";
     else if (age.value < 15 || age.value > 80)
         ageerror.textContent = "You are not eligible to register !";
-    else
+    else {
         ageerror.textContent = "";
+        count++;
+    }
 
     doberror.textContent = "";
     const birthdate = new Date(dob.value);
     const today = new Date();
-    if (birthdate === "") {
+    if (dob.value === "") {
         doberror.textContent = "This field cannot be left empty !";
     }
     else if (birthdate > today) {
         doberror.textContent = "This date is in the future !! That's not possible...";
     }
     else {
-        const age = birthdate - today;
+        const age = today.getFullYear() - birthdate.getFullYear();
         if (age < 15 || age > 80)
             doberror.textContent = "You are not eligible to register :(";
+        else {
+            doberror.textContent = "";
+            count++;
+        }
     }
 
+    //checking valid email
+    emailerror.textContent = "";
+    let e = email.value;
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email.value === "")
+        emailerror.textContent = "This field cannot be left empty !";
+    else if (!pattern.test(e))
+        emailerror.textContent = "Please enter an email address !";
+    else {
+        emailerror.textContent = "";
+        count++;
+    }
+
+    if (count === 5)
+        complete.textContent = "The form is ready for submission ! Yipee !";
+    else
+        complete.textContent = "Seems like you've still got something left here...";
 
 });
