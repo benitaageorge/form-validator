@@ -38,5 +38,50 @@ form.addEventListener('submit', function (event) {
     }
 
     lnameerror.textContent = "";
+    let string2 = lname.value.trim();
+    let s2hasNum = false;
+    i = 0;
+    for (i = 0; i < string2.length; i++) {
+        if (numbers.includes(string2[i]))
+            s2hasNum = true;
+    }
+    if (string2 === "") {
+        lnameerror.textContent = "This field has to be filled !";
+
+    }
+    else if (s2hasNum === true) {
+        lnameerror.textContent = "This field cannot contain a number !";
+    }
+    else {
+        lnameerror.textContent = "";
+    }
+
+    //now for age and dob
+    //age has to be a whole no. between 0 and 80
+    ageerror.textContent = "";
+    if (age.value === "")
+        ageerror.textContent = "This field cannot be left empty !";
+    else if (age.value < 0)
+        ageerror.textContent = "This is not a valid number !";
+    else if (age.value < 15 || age.value > 80)
+        ageerror.textContent = "You are not eligible to register !";
+    else
+        ageerror.textContent = "";
+
+    doberror.textContent = "";
+    const birthdate = new Date(dob.value);
+    const today = new Date();
+    if (birthdate === "") {
+        doberror.textContent = "This field cannot be left empty !";
+    }
+    else if (birthdate > today) {
+        doberror.textContent = "This date is in the future !! That's not possible...";
+    }
+    else {
+        const age = birthdate - today;
+        if (age < 15 || age > 80)
+            doberror.textContent = "You are not eligible to register :(";
+    }
+
 
 });
