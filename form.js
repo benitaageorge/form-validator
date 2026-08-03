@@ -10,6 +10,8 @@ const doberror = document.getElementById('dob_error');
 const email = document.getElementById('email');
 const emailerror = document.getElementById('email_error');
 const complete = document.getElementById('complete');
+const pwd = document.getElementById('password');
+const pwderror = document.getElementById('password_error');
 //let count = 0;
 
 form.addEventListener('submit', function (event) {
@@ -108,7 +110,29 @@ form.addEventListener('submit', function (event) {
         count++;
     }
 
-    if (count === 5)
+    //password check
+    pwderror.textContent = "";
+    let p = pwd.value;
+    let pcontainsnum = false;
+    if (pwd.value === "")
+        pwderror.textContent = "Please enter your password";
+    else if (p.length < 8)
+        pwderror.textContent = "Password must contain at least 8 characters !";
+    else {
+        for (i = 0; i < p.length; i++) {
+            if (numbers.includes(p[i]))
+                pcontainsnum = true;
+        }
+        if (!pcontainsnum)
+            pwderror.textContent = "Password must contain at least 1 number !";
+        else {
+            pwderror.textContent = "";
+            count++;
+        }
+    }
+
+
+    if (count === 6)
         complete.textContent = "The form is ready for submission ! Yipee !";
     else
         complete.textContent = "Seems like you've still got something left here...";
