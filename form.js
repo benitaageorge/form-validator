@@ -9,6 +9,8 @@ const dob = document.getElementById('date');
 const doberror = document.getElementById('dob_error');
 const email = document.getElementById('email');
 const emailerror = document.getElementById('email_error');
+const password = document.getElementById('password');
+const passworderror = document.getElementById('password_error');
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();
